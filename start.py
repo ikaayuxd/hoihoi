@@ -18,11 +18,8 @@ start_buttons = [
 
 @bot.on(events.NewMessage(incoming=True, pattern=f"^/start$"))
 async def starters(event):
-    from_ = await bot.get_entity(event.sender_id)
     await event.reply(
         start_msg.format(user=from_.first_name),
         buttons=start_buttons,
         link_preview=False,
     )
-    if not (await is_added("BOTUSERS", event.sender_id)):
-        await add_to_db("BOTUSERS", event.sender_id)
