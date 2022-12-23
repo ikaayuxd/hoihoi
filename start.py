@@ -9,19 +9,14 @@ except Exception as e:
     log.exception(e)
     exit(1)
 
-start_msg = """Hi {user}!
-**I'm Channel Actions Bot, a bot mainly focused on working with the new [admin approval invite links](https://t.me/telegram/153).**
-**__I can__**:
-- __Auto approve new join requests.__
-- __Auto Decline New Join Requests.__
-`Click the below button to know how to use me!`"""
+start_msg = """Hii it's me!`"""
 start_buttons = [
     [Button.inline("How to use me ❓", data="helper")],
     [Button.url("Updates", "https://t.me/BotzHub")],
 ]
 
 
-@bot.on(events.NewMessage(incoming=True, pattern=f"^/start({bot_username})?$"))
+@bot.on(events.NewMessage(incoming=True, pattern=f"^/start$"))
 async def starters(event):
     from_ = await bot.get_entity(event.sender_id)
     await event.reply(
